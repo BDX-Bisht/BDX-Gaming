@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text Color Change Button</title>
+</head>
+
+<body style="background-color: darkblue;">
+    <p id="text" style="color: red;">This is some text.</p>
+    <button id="change-color-button">Change Color</button>
+
+    <script>
+        const textElement = document.getElementById("text");
+        const colors = ["red", "green", "blue", "yellow", "purple"]; // Array of colors to cycle through
+        let currentIndex = 0; // Current index in the array
+
+        function changeColorWithTimeout() {
+            textElement.style.color = colors[currentIndex];
+            currentIndex = (currentIndex + 1) % colors.length; // Increment index and wrap around
+
+            // Use setTimeout to call the function again after a delay
+            setTimeout(changeColorWithTimeout, 100); // Change color every 1000 milliseconds (1 second)
+        }
+
+        const button = document.getElementById("change-color-button");
+
+        // Add an onclick event handler to the button
+        button.onclick = () => {
+            // Start the color change loop
+            changeColorWithTimeout();
+        };
+    </script>
+</body>
+
+</html>
